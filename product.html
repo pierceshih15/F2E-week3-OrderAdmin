@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>訂單管理系統</title>
+
+  <!-- bootstrap 套件 -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+
+  <!-- fontawesome 套件 -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+    integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
+
+  <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+    crossorigin="anonymous"></script>
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <!-- Header 內容 -->
+  <header>
+    <nav class="navbar navbar-expand-lg bg-dark">
+      <div class="container">
+        <a class="navbar-brand text-light font-weight-bold f-24" href="#">Shoptime</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
+          aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse ml-5" id="navbarText">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="/index.html">HOME</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/orders.html">ORDERS</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="/product.html">PRODUCT</a>
+            </li>
+          </ul>
+          <li class="navbar-text text-light font-weight-bold mr-5">
+            <big>ADMIN</big>
+          </li>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Main 內容 -->
+  <main class="container my-5">
+    <!-- filter Button -->
+    <div class="d-flex justify-content-between mb-3">
+      <div class="select d-inline-block">
+        <input type="checkbox" />
+        <i class="fas fa-angle-down algin-middle ml-1"></i>
+        <i class="fas fa-tags algin-middle ml-2"></i>
+        <div class="select-option">
+          <div class="select-option-item py-2">Select All</div>
+          <div class="select-option-item py-2 bg-dark text-light">Unselect All</div>
+          <div class="select-option-item py-2">Paid</div>
+          <div class="select-option-item py-2">Unpaid</div>
+          <div class="select-option-item py-2">Shipping</div>
+          <div class="select-option-item py-2">Done</div>
+        </div>
+      </div>
+
+      <div class="d-inline-block mr-5">
+        <div class="add">
+          <button type="button" class="btn bg-dark text-light py-2 px-4 box-show-up">
+            <span>ADD NEW PRODUCT</span>
+            <i class="fas fa-plus ml-2"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Table Content -->
+    <table id="productList">
+      <!-- Table Header -->
+      <thead>
+        <tr class="table-header text-left">
+          <th class="table-title py-2 pl-3" width="300">Product</th>
+          <th class="table-title py-2" width="120">Original</th>
+          <th class="table-title py-2" width="120">Discount</th>
+          <th class="table-title py-2" width="120">Size</th>
+          <th class="table-title py-2" width="120">Color</th>
+          <th class="table-title py-2" width="120">Inventory</th>
+          <th class="table-title py-2" width="160">Status</th>
+        </tr>
+      </thead>
+
+      <!-- Table Body -->
+      <tbody>
+        <!-- 第一筆產品資訊 -->
+        <tr>
+          <td class="product d-flex justify-content-center">
+            <input type="checkbox" class="product-checkbox" />
+            <div class="product-image mx-2">
+              <img
+                src="https://images.unsplash.com/photo-1530645728336-ac5b9b630f1c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+                alt="" />
+            </div>
+            <span class="product-text">Mauris non tem.</span>
+          </td>
+          <td class="original-price">
+            <span class="product-text text-right">$3,200</span>
+          </td>
+          <td class="discount-price">
+            <span class="product-text text-right">$2,800</span>
+          </td>
+          <td colspan="3" class="colspan-size-color-inventory">
+            <div class="item">
+              <div class="size">L</div>
+              <div class="color">
+                <span class="d-block">Gray</span>
+                <span class="d-block">Black</span>
+              </div>
+              <div class="inventory text-right">
+                <span class="d-block">10</span>
+                <span class="d-block">20</span>
+              </div>
+            </div>
+
+            <div class="item">
+              <div class="size">M</div>
+              <div class="color">
+                <span class="d-block">Gray</span>
+                <span class="d-block">Black</span>
+              </div>
+              <div class="inventory text-right">
+                <span class="d-block">15</span>
+                <span class="d-block">20</span>
+              </div>
+            </div>
+
+            <div class="item">
+              <div class="size">S</div>
+              <div class="color">
+                <span class="d-block">Gray</span>
+                <span class="d-block">Black</span>
+              </div>
+              <div class="inventory text-right">
+                <span class="d-block">10</span>
+                <span class="d-block">20</span>
+              </div>
+            </div>
+          </td>
+
+          <td class="status">
+            <div class="dropdown d-inline-block">
+              <a class="btn btn-success dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span>PAID</span>
+              </a>
+              <div class="dropdown-menu text-center" aria-labelledby="dropdownMenuLink">
+                <a class="dropdown-item" href="#">Paid</a>
+                <a class="dropdown-item" href="#">Unpaid</a>
+                <a class="dropdown-item bg-dark text-light" href="#">Shipping</a>
+                <a class="dropdown-item" href="#">Done</a>
+              </div>
+            </div>
+          </td>
+        </tr>
+
+        <!-- 第二筆產品資訊 -->
+        <tr>
+          <td class="product d-flex justify-content-center">
+            <input type="checkbox" class="product-checkbox" />
+            <div class="product-image mx-2">
+              <img
+                src="https://images.unsplash.com/photo-1530645728336-ac5b9b630f1c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+                alt="" />
+            </div>
+            <span class="product-text">Mauris non tem.</span>
+          </td>
+          <td class="original-price">
+            <span class="product-text text-right">$3,200</span>
+          </td>
+          <td class="discount-price">
+            <span class="product-text text-right">$2,800</span>
+          </td>
+          <td colspan="3" class="colspan-size-color-inventory">
+            <div class="item">
+              <div class="size">L</div>
+              <div class="color">
+                <span class="d-block">Gray</span>
+                <span class="d-block">Black</span>
+              </div>
+              <div class="inventory text-right">
+                <span class="d-block">10</span>
+                <span class="d-block">20</span>
+              </div>
+            </div>
+
+            <div class="item">
+              <div class="size">M</div>
+              <div class="color">
+                <span class="d-block">Gray</span>
+                <span class="d-block">Black</span>
+              </div>
+              <div class="inventory text-right">
+                <span class="d-block">15</span>
+                <span class="d-block">20</span>
+              </div>
+            </div>
+
+            <div class="item">
+              <div class="size">S</div>
+              <div class="color">
+                <span class="d-block">Gray</span>
+                <span class="d-block">Black</span>
+              </div>
+              <div class="inventory text-right">
+                <span class="d-block">10</span>
+                <span class="d-block">20</span>
+              </div>
+            </div>
+          </td>
+
+          <td class="status">
+            <div class="dropdown d-inline-block">
+              <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span>DONE</span>
+              </a>
+              <div class="dropdown-menu text-center" aria-labelledby="dropdownMenuLink">
+                <a class="dropdown-item" href="#">Paid</a>
+                <a class="dropdown-item" href="#">Unpaid</a>
+                <a class="dropdown-item bg-dark text-light" href="#">Shipping</a>
+                <a class="dropdown-item" href="#">Done</a>
+              </div>
+            </div>
+          </td>
+        </tr>
+
+        <!-- 第三筆產品資訊 -->
+        <tr>
+          <td class="product d-flex justify-content-center">
+            <input type="checkbox" class="product-checkbox" />
+            <div class="product-image mx-2">
+              <img
+                src="https://images.unsplash.com/photo-1530645728336-ac5b9b630f1c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+                alt="" />
+            </div>
+            <span class="product-text">Mauris non tem.</span>
+          </td>
+          <td class="original-price">
+            <span class="product-text text-right">$3,200</span>
+          </td>
+          <td class="discount-price">
+            <span class="product-text text-right">$2,800</span>
+          </td>
+          <td colspan="3" class="colspan-size-color-inventory">
+            <div class="item">
+              <div class="size">L</div>
+              <div class="color">
+                <span class="d-block">Gray</span>
+                <span class="d-block">Black</span>
+              </div>
+              <div class="inventory text-right">
+                <span class="d-block">10</span>
+                <span class="d-block">20</span>
+              </div>
+            </div>
+
+            <div class="item">
+              <div class="size">M</div>
+              <div class="color">
+                <span class="d-block">Gray</span>
+                <span class="d-block">Black</span>
+              </div>
+              <div class="inventory text-right">
+                <span class="d-block">15</span>
+                <span class="d-block">20</span>
+              </div>
+            </div>
+
+            <div class="item">
+              <div class="size">S</div>
+              <div class="color">
+                <span class="d-block">Gray</span>
+                <span class="d-block">Black</span>
+              </div>
+              <div class="inventory text-right">
+                <span class="d-block">10</span>
+                <span class="d-block">20</span>
+              </div>
+            </div>
+          </td>
+
+          <td class="status">
+            <div class="dropdown d-inline-block">
+              <a class="btn btn-danger dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span>UNPAID</span>
+              </a>
+              <div class="dropdown-menu text-center" aria-labelledby="dropdownMenuLink">
+                <a class="dropdown-item" href="#">Paid</a>
+                <a class="dropdown-item" href="#">Unpaid</a>
+                <a class="dropdown-item bg-dark text-light" href="#">Shipping</a>
+                <a class="dropdown-item" href="#">Done</a>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </main>
+
+  <div id="box" class="hide">
+    <div class="content">
+      <div class="title">
+        ADD NEW PRODUCT
+        <a class="fas fa-times box-close"></a>
+      </div>
+
+      <div class="row container mt-4 mx-1">
+        <div class="left">
+          <div class="upload">
+            <i class="fas fa-cloud-upload-alt d-block"></i>
+            <span class="d-block">Drag an image or click here to upload…</span>
+          </div>
+
+          <div class="imgs">
+            <div class="picture">
+              <img
+                src="https://images.unsplash.com/photo-1530645728336-ac5b9b630f1c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=126" />
+            </div>
+            <div class="picture">
+              <img
+                src="https://images.unsplash.com/photo-1530645728336-ac5b9b630f1c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=126" />
+            </div>
+            <div class="picture">
+              <img
+                src="https://images.unsplash.com/photo-1530645728336-ac5b9b630f1c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=126" />
+            </div>
+            <div class="picture">
+              <img
+                src="https://images.unsplash.com/photo-1530645728336-ac5b9b630f1c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=126" />
+            </div>
+            <div class="picture">
+              <img
+                src="https://images.unsplash.com/photo-1530645728336-ac5b9b630f1c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=126" />
+            </div>
+          </div>
+        </div>
+
+        <div class="right">
+          <form action="" class="info">
+            <h4>Product Description</h4>
+            <input type="text" placeholder="Vestibulum nec" />
+            <textarea placeholder="Description"></textarea>
+
+            <h4>Price</h4>
+            <div class="n2 clearfix">
+              <div class="set">
+                <span>Original</span>
+                <input type="text" value="$3,200" />
+              </div>
+
+              <div class="set">
+                <span>Discount</span>
+                <input type="text" value="$2,800" />
+              </div>
+            </div>
+
+            <h4>Specification</h4>
+            <div class="n3 mb-2 clearfix">
+              <div class="set">
+                <span>Size</span>
+                <select>
+                  <option value="請選擇" selected disabled>請選擇</option>
+                  <option value="L">L</option>
+                  <option value="M">M</option>
+                  <option value="S">S</option>
+                </select>
+              </div>
+
+              <div class="set">
+                <span>Color</span>
+                <input type="text" value="Gary" />
+              </div>
+
+              <div class="set">
+                <span>Inventory</span>
+                <input type="text" value="15" />
+              </div>
+            </div>
+
+            <div class="addNewOne">
+              <button type="button" class="btn bg-dark text-light py-2 px-4">
+                <span>ADD NEW SPECIFICATION</span>
+                <i class="fas fa-plus ml-2"></i>
+              </button>
+            </div>
+
+            <div class="box-status float-right">
+              <span>SAVE DRAFT</span>
+              <button type="button" class="btn bg-dark text-light py-2 px-4">
+                <span>PUBLISH</span>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="cover"></div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+    crossorigin="anonymous"></script>
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+  </script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+  </script>
+
+  <script src="js/index.js"></script>
+</body>
+
+</html>

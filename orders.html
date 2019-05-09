@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>訂單管理系統</title>
+
+  <!-- bootstrap 套件 -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+
+  <!-- fontawesome 套件 -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+    integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
+
+  <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+    crossorigin="anonymous"></script>
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <!-- Header 內容 -->
+  <header>
+    <nav class="navbar navbar-expand-lg bg-dark">
+      <div class="container">
+        <a class="navbar-brand text-light font-weight-bold f-24" href="#">Shoptime</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
+          aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse ml-5" id="navbarText">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="/index.html">HOME</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="/orders.html">ORDERS</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/product.html">PRODUCT</a>
+            </li>
+          </ul>
+          <li class="navbar-text text-light font-weight-bold mr-5">
+            <big>ADMIN</big>
+          </li>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Main 內容 -->
+  <main class="container my-5">
+    <!-- filter Button -->
+    <div class="d-flex justify-content-between mb-3">
+      <div class="select d-inline-block">
+        <input type="checkbox" />
+        <i class="fas fa-angle-down algin-middle ml-1"></i>
+        <i class="fas fa-tags algin-middle ml-2"></i>
+        <div class="select-option">
+          <div class="select-option-item py-2">Select All</div>
+          <div class="select-option-item py-2 bg-dark text-light">Unselect All</div>
+          <div class="select-option-item py-2">Paid</div>
+          <div class="select-option-item py-2">Unpaid</div>
+          <div class="select-option-item py-2">Shipping</div>
+          <div class="select-option-item py-2">Done</div>
+        </div>
+      </div>
+
+      <div class="d-inline-block mr-5">
+        <div class="dropdown d-inline-block">
+          <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span>EDIT SECTION</span>
+          </a>
+          <div class="dropdown-menu text-left" aria-labelledby="dropdownMenuLink">
+            <button class="dropdown-item">
+              <input class="mr-1" type="checkbox" id="orderId" name="orderId">
+              <label for="orderId">Order ID</label>
+            </button>
+
+            <button class="dropdown-item">
+              <input class="mr-1" type="checkbox" id="customer" name="customer">
+              <label for="customer">Customer</label>
+            </button>
+
+            <button class="dropdown-item">
+              <input class="mr-1" type="checkbox" id="productList" name="productList">
+              <label for="productList">Product List</label>
+            </button>
+
+            <button class="dropdown-item">
+              <input class="mr-1" type="checkbox" id="total" name="total">
+              <label for="total">Total</label>
+            </button>
+
+            <button class="dropdown-item">
+              <input class="mr-1" type="checkbox" id="addToCart" name="addToCart">
+              <label for="addToCart">Add to Cart</label>
+            </button>
+
+            <button class="dropdown-item">
+              <input class="mr-1" type="checkbox" id="checkOut" name="checkOut">
+              <label for="checkOut">Check-out</label>
+            </button>
+
+            <button class="dropdown-item">
+              <input class="mr-1" type="checkbox" id="address" name="address">
+              <label for="address">Address</label>
+            </button>
+
+            <button class="dropdown-item">
+              <input class="mr-1" type="checkbox" id="phone" name="phone">
+              <label for="phone">Phone</label>
+            </button>
+
+            <button class="dropdown-item">
+              <input class="mr-1" type="checkbox" id="email" name="email">
+              <label for="email">Email</label>
+            </button>
+
+            <button class="dropdown-item">
+              <input class="mr-1" type="checkbox" id="status" name="status">
+              <label for="status">Status</label>
+            </button>
+
+          </div>
+        </div>
+
+
+
+
+
+
+      </div>
+    </div>
+
+    <!-- Table Content -->
+    <table class="mb-3" id="orderList">
+      <!-- Table Header -->
+      <thead>
+        <tr class="table-header text-left">
+          <th class="table-title py-2 pl-4" width="200">Customer</th>
+          <th class="table-title py-2" width="170">Product List</th>
+          <th class="table-title py-2 text-right" width="100">Total</th>
+          <th class="table-title py-2 text-center" width="130">Add to Cart</th>
+          <th class="table-title py-2 text-center" width="130">Check-out</th>
+          <th class="table-title py-2" width="130">Address</th>
+          <th class="table-title py-2" width="150">Status</th>
+        </tr>
+      </thead>
+
+      <!-- Table Body -->
+      <tbody>
+        <!-- 第一筆客戶資訊 -->
+        <tr>
+          <td class="customer">
+            <input type="checkbox" />
+            <span class="customer-name">Ian Medina</span>
+          </td>
+
+          <td class="product-list">
+            <div class="product-list-item">
+              <span class="product-list-name d-block">Vestibulum.</span>
+              <span class="product-list-price">$1,400</span>
+              <span class="product-list-num float-right">1</span>
+            </div>
+
+            <div class="product-list-item">
+              <span class="product-list-name d-block">Fusce vehicu.</span>
+              <span class="product-list-price">$800</span>
+              <span class="product-list-num float-right">1</span>
+            </div>
+          </td>
+
+          <td class="product-total-price">
+            <span>$2,200</span>
+          </td>
+
+          <td class="addToCart-time">
+            <span class="d-block">2018/6/8</span>
+            <span class="d-block">13:39</span>
+          </td>
+
+          <td class="checkOut-time">
+            <span class="d-block">2018/6/8</span>
+            <span class="d-block">20:23</span>
+          </td>
+
+          <td class="customer-address">
+            <span>386 Windler Drives
+              Apt. 358</span>
+          </td>
+
+
+          <td class="status">
+            <div class="dropdown d-inline-block">
+              <a class="btn btn-success dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span>PAID</span>
+              </a>
+              <div class="dropdown-menu text-center" aria-labelledby="dropdownMenuLink">
+                <a class="dropdown-item bg-dark text-light" href="#">Paid</a>
+                <a class="dropdown-item" href="#">Unpaid</a>
+                <a class="dropdown-item" href="#">Shipping</a>
+                <a class="dropdown-item" href="#">Done</a>
+              </div>
+            </div>
+          </td>
+        </tr>
+
+        <!-- 第二筆客戶資料 -->
+        <tr>
+          <td class="customer">
+            <input type="checkbox" />
+            <span class="customer-name">Manuel Stephens</span>
+          </td>
+
+          <td class="product-list">
+            <div class="product-list-item">
+              <span class="product-list-name d-block">Donec facili.</span>
+              <span class="product-list-price">$1,400</span>
+              <span class="product-list-num float-right">1</span>
+            </div>
+          </td>
+
+          <td class="product-total-price">
+            <span>$1,400</span>
+          </td>
+
+          <td class="addToCart-time">
+            <span class="d-block">2018/6/8</span>
+            <span class="d-block">13:39</span>
+          </td>
+
+          <td class="checkOut-time">
+            <span class="d-block">2018/6/8</span>
+            <span class="d-block">20:23</span>
+          </td>
+
+          <td class="customer-address">
+            <span>531 Orval Mission Suite 134</span>
+          </td>
+
+
+          <td class="status">
+            <div class="dropdown d-inline-block">
+              <a class="btn btn-success dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span>PAID</span>
+              </a>
+              <div class="dropdown-menu text-center" aria-labelledby="dropdownMenuLink">
+                <a class="dropdown-item bg-dark text-light" href="#">Paid</a>
+                <a class="dropdown-item" href="#">Unpaid</a>
+                <a class="dropdown-item" href="#">Shipping</a>
+                <a class="dropdown-item" href="#">Done</a>
+              </div>
+            </div>
+          </td>
+        </tr>
+
+        <!-- 第三筆客戶資訊 -->
+        <tr>
+          <td class="customer">
+            <input type="checkbox" />
+            <span class="customer-name">Daisy Reynolds</span>
+          </td>
+
+          <td class="product-list">
+            <div class="product-list-item">
+              <span class="product-list-name d-block">Curabitur lo.</span>
+              <span class="product-list-price">$1,400</span>
+              <span class="product-list-num float-right">1</span>
+            </div>
+
+            <div class="product-list-item">
+              <span class="product-list-name d-block">Donec facili.</span>
+              <span class="product-list-price">$800</span>
+              <span class="product-list-num float-right">1</span>
+            </div>
+
+            <div class="product-list-item">
+              <span class="product-list-name d-block">Nam porttito.</span>
+              <span class="product-list-price">$800</span>
+              <span class="product-list-num float-right">1</span>
+            </div>
+          </td>
+
+          <td class="product-total-price">
+            <span>$3,000</span>
+          </td>
+
+          <td class="addToCart-time">
+            <span class="d-block">2018/6/8</span>
+            <span class="d-block">13:39</span>
+          </td>
+
+          <td class="checkOut-time">
+            <span class="d-block">2018/6/8</span>
+            <span class="d-block">20:23</span>
+          </td>
+
+          <td class="customer-address">
+            <span>38 Juston Islands Apt. 012</span>
+          </td>
+
+
+          <td class="status">
+            <div class="dropdown d-inline-block">
+              <a class="btn btn-warning text-light dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span>Shipping</span>
+              </a>
+              <div class="dropdown-menu text-center" aria-labelledby="dropdownMenuLink">
+                <a class="dropdown-item" href="#">Paid</a>
+                <a class="dropdown-item" href="#">Unpaid</a>
+                <a class="dropdown-item bg-dark text-light" href="#">Shipping</a>
+                <a class="dropdown-item" href="#">Done</a>
+              </div>
+            </div>
+          </td>
+        </tr>
+
+        <!-- 第四筆客戶資訊 -->
+        <tr>
+          <td class="customer">
+            <input type="checkbox" />
+            <span class="customer-name">Daisy Reynolds</span>
+          </td>
+
+          <td class="product-list">
+            <div class="product-list-item">
+              <span class="product-list-name d-block">Lorem ipsum.</span>
+              <span class="product-list-price">$1,400</span>
+              <span class="product-list-num float-right">1</span>
+            </div>
+
+            <div class="product-list-item">
+              <span class="product-list-name d-block">Nam porttito.</span>
+              <span class="product-list-price">$1,400</span>
+              <span class="product-list-num float-right">1</span>
+            </div>
+          </td>
+
+          <td class="product-total-price">
+            <span>$2,800</span>
+          </td>
+
+          <td class="addToCart-time">
+            <span class="d-block">2018/6/8</span>
+            <span class="d-block">13:39</span>
+          </td>
+
+          <td class="checkOut-time">
+            <span class="d-block">2018/6/8</span>
+            <span class="d-block">20:23</span>
+          </td>
+
+          <td class="customer-address">
+            <span>38 Juston Islands Apt. 012</span>
+          </td>
+
+
+          <td class="status">
+            <div class="dropdown d-inline-block">
+              <a class="btn btn-warning text-light dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span>Shipping</span>
+              </a>
+              <div class="dropdown-menu text-center" aria-labelledby="dropdownMenuLink">
+                <a class="dropdown-item" href="#">Paid</a>
+                <a class="dropdown-item" href="#">Unpaid</a>
+                <a class="dropdown-item bg-dark text-light" href="#">Shipping</a>
+                <a class="dropdown-item" href="#">Done</a>
+              </div>
+            </div>
+          </td>
+        </tr>
+
+        <!-- 第五筆客戶資訊 -->
+        <tr>
+          <td class="customer">
+            <input type="checkbox" />
+            <span class="customer-name">Daisy Reynolds</span>
+          </td>
+
+          <td class="product-list">
+            <div class="product-list-item">
+              <span class="product-list-name d-block">Mauris non.</span>
+              <span class="product-list-price">$1,400</span>
+              <span class="product-list-num float-right">1</span>
+            </div>
+
+            <div class="product-list-item">
+              <span class="product-list-name d-block">Vestibulum.</span>
+              <span class="product-list-price">$1,400</span>
+              <span class="product-list-num float-right">1</span>
+            </div>
+          </td>
+
+          <td class="product-total-price">
+            <span>$2,800</span>
+          </td>
+
+          <td class="addToCart-time">
+            <span class="d-block">2018/6/8</span>
+            <span class="d-block">13:39</span>
+          </td>
+
+          <td class="checkOut-time">
+            <span class="d-block">2018/6/8</span>
+            <span class="d-block">20:23</span>
+          </td>
+
+          <td class="customer-address">
+            <span>38 Juston Islands Apt. 012</span>
+          </td>
+
+          <td class="status">
+            <div class="dropdown d-inline-block">
+              <a class="btn btn-primary text-light dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span>Done</span>
+              </a>
+              <div class="dropdown-menu text-center" aria-labelledby="dropdownMenuLink">
+                <a class="dropdown-item" href="#">Paid</a>
+                <a class="dropdown-item" href="#">Unpaid</a>
+                <a class="dropdown-item" href="#">Shipping</a>
+                <a class="dropdown-item bg-dark text-light" href="#">Done</a>
+              </div>
+            </div>
+          </td>
+        </tr>
+
+        <!-- 第六筆客戶資訊 -->
+        <tr>
+          <td class="customer">
+            <input type="checkbox" />
+            <span class="customer-name">Daisy Reynolds</span>
+          </td>
+
+          <td class="product-list">
+            <div class="product-list-item">
+              <span class="product-list-name d-block">Curabitur lo.</span>
+              <span class="product-list-price">$1,400</span>
+              <span class="product-list-num float-right">1</span>
+            </div>
+          </td>
+
+          <td class="product-total-price">
+            <span>$1,400</span>
+          </td>
+
+          <td class="addToCart-time">
+            <span class="d-block">2018/6/8</span>
+            <span class="d-block">13:39</span>
+          </td>
+
+          <td class="checkOut-time">
+          </td>
+
+          <td class="customer-address">
+            <span>38 Juston Islands Apt. 012</span>
+          </td>
+
+          <td class="status">
+            <div class="dropdown d-inline-block">
+              <a class="btn btn-secondary text-light dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span>Unpaid</span>
+              </a>
+              <div class="dropdown-menu text-center" aria-labelledby="dropdownMenuLink">
+                <a class="dropdown-item" href="#">Paid</a>
+                <a class="dropdown-item  bg-dark text-light" href="#">Unpaid</a>
+                <a class="dropdown-item" href="#">Shipping</a>
+                <a class="dropdown-item" href="#">Done</a>
+              </div>
+            </div>
+          </td>
+        </tr>
+
+      </tbody>
+    </table>
+
+    <nav aria-label="Page navigation example">
+      <ul class="pagination float-right pr-5 mr-5">
+        <li class="page-item">
+          <a class="page-link px-3" href="#" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+          </a>
+        </li>
+        <li class="page-item"><a class="page-link bg-dark text-light px-3" href="#">1</a></li>
+        <li class="page-item"><a class="page-link px-3" href="#">2</a></li>
+        <li class="page-item"><a class="page-link px-3" href="#">3</a></li>
+        <li class="page-item">
+          <a class="page-link px-3" href="#" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+  </main>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+  </script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+  </script>
+
+</body>
+
+</html>

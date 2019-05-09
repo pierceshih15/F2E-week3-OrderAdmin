@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>訂單管理系統</title>
+
+  <!-- bootstrap 套件 -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  <!-- fontawesome 套件 -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+    integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+  <!-- 圖表工具套件 -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/4.2.1/echarts-en.common.js"></script>
+
+  <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+  <!-- Header 內容 -->
+  <header>
+    <nav class="navbar navbar-expand-lg bg-dark">
+      <div class="container">
+        <a class="navbar-brand text-light font-weight-bold f-24" href="#">Shoptime</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
+          aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse ml-5" id="navbarText">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link active" href="/index.html">HOME</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/orders.html">ORDERS</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/product.html">PRODUCT</a>
+            </li>
+          </ul>
+          <li class="navbar-text text-light font-weight-bold mr-5">
+            <big>ADMIN</big>
+          </li>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Main 內容 -->
+  <main class="container my-5">
+    <div class="d-flex justify-content-between mb-3">
+      <div class="left d-inline-block">
+        <h2>OVERVIEW</h2>
+      </div>
+      <div class="d-inline-block pt-2 text-muted">
+        <div class="d-inline-block mr-3">
+          <span>2018/6/6</span>
+          <i class="fas fa-angle-right mx-1"></i>
+          <span>2018/6/13</span>
+        </div>
+
+        <div class="dropdown d-inline-block">
+          <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            <span>Weekly</span>
+          </a>
+          <div class="dropdown-menu text-center" aria-labelledby="dropdownMenuLink">
+            <a class="dropdown-item" href="#">Daily</a>
+            <a class="dropdown-item bg-dark text-light" href="#">Weekly</a>
+            <a class="dropdown-item" href="#">Monthly</a>
+            <a class="dropdown-item" href="#">Yearly</a>
+            <a class="dropdown-item" href="#">Custom</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+
+    <div class="container">
+      <!-- 數字資料 -->
+      <div class="row mb-4 justify-content-between">
+        <div class="panel-n3">
+          <div>
+            <i class="fas fa-hand-holding-usd fa-hand-holding-7x mr-1"></i>
+            <p class="d-inline-block overview-title">TOTAL REVENUE</p>
+          </div>
+          <h1 class="green overview-number">5,454,000</h1>
+        </div>
+
+        <div class="panel-n3">
+          <div>
+            <i class="fas fa-dollar-sign mr-1"></i>
+            <p class="d-inline-block overview-title">TOTAL COST</p>
+          </div>
+          <h1 class="red overview-number">1,266,000</h1>
+        </div>
+
+        <div class="panel-n3">
+          <div>
+            <i class="fas fa-money-check-alt mr-1"></i>
+            <p class="d-inline-block overview-title">NET INCOME</p>
+          </div>
+          <h1 class="blue overview-number">4,188,000</h1>
+        </div>
+      </div>
+    </div>
+
+    <!-- 圖表資料 -->
+    <div class="panel-n1 mb-4">
+      <div id="chart"></div>
+    </div>
+
+    <!-- 流量與訂單資料 -->
+    <div class="container">
+      <div class="row mb-4 justify-content-between">
+        <!-- 左側流量區 -->
+        <div class="panel-n2">
+          <h4 class="text-left mb-3">Transaction Website</h4>
+          <ul class="row list-group">
+            <!-- Facebook -->
+            <li class="transitionGroup py-4 col-md-12">
+              <div class="d-inline-block float-left">
+                <i class="fab fa-facebook icon mr-2"></i>
+                <span class="transitionName">Facebook.com</span>
+              </div>
+              <div class="d-inline-block float-right pt-2">
+                <span class="transitionNum mr-1">45,836</span>
+                <i class="fas fa-arrow-up mx-2 green align-middle"></i>
+                <span class="transitionRate">20%
+                  <div class="tip text-light text-center pt-3">
+                    <div class="tipInfo">INCREASE <big class="green">899</big> VIEWS</div>
+                    <i class="tipView">last week: 44,937</i>
+                  </div>
+                </span>
+              </div>
+            </li>
+
+            <!-- Google -->
+            <li class="transitionGroup py-4 col-md-12">
+              <div class="d-inline-block float-left">
+                <i class="fab fa-google icon mr-2"></i>
+                <span class="transitionName">Google.com</span>
+              </div>
+              <div class="d-inline-block float-right pt-2">
+                <span class="transitionNum mr-1">23,582</span>
+                <i class="fas fa-arrow-up mx-2 green align-middle"></i>
+                <span class="transitionRate">12%
+                  <div class="tip text-light text-center pt-3">
+                    <div class="tipInfo">INCREASE <big class="green">899</big> VIEWS</div>
+                    <i class="tipView">last week: 44,937</i>
+                  </div>
+                </span>
+
+              </div>
+            </li>
+
+            <!-- Shopify -->
+            <li class="transitionGroup py-4 col-md-12">
+              <div class="d-inline-block float-left">
+                <i class="fab fa-stripe-s icon mr-2"></i>
+                <span class="transitionName">Shopify.com</span>
+              </div>
+              <div class="d-inline-block float-right pt-2">
+                <span class="transitionNum mr-1">2,489</span>
+                <i class="fas fa-arrow-up mx-2 red align-middle"></i>
+                <span class="transitionRate">15%
+                  <div class="tip text-light text-center pt-3">
+                    <div class="tipInfo">INCREASE <big class="green">899</big> VIEWS</div>
+                    <i class="tipView">last week: 44,937</i>
+                  </div>
+                </span>
+              </div>
+            </li>
+
+            <!-- Wordpress -->
+            <li class="transitionGroup py-4 col-md-12">
+              <div class="d-inline-block float-left">
+                <i class="fab fa-wordpress icon mr-2"></i>
+                <span class="transitionName">Wordpress.com</span>
+              </div>
+              <div class="d-inline-block float-right pt-2">
+                <span class="transitionNum mr-1">1,057</span>
+                <i class="fas fa-arrow-up mx-2 red align-middle"></i>
+                <span class="transitionRate">30%
+                  <div class="tip text-light text-center pt-3">
+                    <div class="tipInfo">INCREASE <big class="green">899</big> VIEWS</div>
+                    <i class="tipView">last week: 44,937</i>
+                  </div>
+                </span>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- 右側訂單區 -->
+        <div class="panel-n2">
+          <h4 class="text-left mb-3">Latest Orders</h4>
+          <ul class="row list-group">
+            <!-- 第一筆訂單 -->
+            <li class="transitionGroup py-2 col-md-12">
+              <div class="d-inline-block float-left">
+                <img
+                  src="https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+                  class="image align-top mr-2" alt="Vintage T-shirt">
+                <div class="ordersInfo d-inline-block">
+                  <div class="mb-2">
+                    <h5 class="ordersName">Vintage T-shirt</h5>
+                    <i class="far fa-clock ordersIcon mr-2"></i>
+                    <span class="ordersTime">2018/6/13 13:42</span>
+                  </div>
+                  <div>
+                    <i class="fas fa-male ordersIcon mr-2"></i>
+                    <span class="ordersModel">Belle Willis</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="total float-right">
+                <div class="total-text mb-1">Total</div>
+                <div class="total-number">3,200</div>
+              </div>
+            </li>
+
+            <!-- 第二筆訂單 -->
+            <li class="transitionGroup py-2 col-md-12 mt-2">
+              <div class="d-inline-block float-left">
+                <img
+                  src="https://images.unsplash.com/photo-1530645728336-ac5b9b630f1c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+                  class="image align-top mr-2" alt="Cowboy Jacket">
+                <div class="ordersInfo d-inline-block">
+                  <div class="mb-2">
+                    <h5 class="ordersName">Cowboy Jacket</h5>
+                    <i class="far fa-clock ordersIcon mr-2"></i>
+                    <span class="ordersTime">2018/6/13 10:45</span>
+                  </div>
+                  <div>
+                    <i class="fas fa-male ordersIcon mr-2"></i>
+                    <span class="ordersModel">Adrian Cummings</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="total float-right">
+                <div class="total-text mb-1">Total</div>
+                <div class="total-number">2,800</div>
+              </div>
+            </li>
+
+            <!-- 第三筆訂單 -->
+            <li class="transitionGroup py-2 col-md-12 mt-2">
+              <div class="d-inline-block float-left">
+                <img
+                  src="https://images.unsplash.com/photo-1548357263-68e309ddcd34?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+                  class="image align-top mr-2" alt="Coach Coat">
+                <div class="ordersInfo d-inline-block">
+                  <div class="mb-2">
+                    <h5 class="ordersName">Coach Coat</h5>
+                    <i class="far fa-clock ordersIcon mr-2"></i>
+                    <span class="ordersTime">2018/6/13 8:26</span>
+                  </div>
+                  <div>
+                    <i class="fas fa-male ordersIcon mr-2"></i>
+                    <span class="ordersModel">Lura Holland</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="total float-right">
+                <div class="total-text mb-1">Total</div>
+                <div class="total-number">1,600</div>
+              </div>
+            </li>
+
+
+
+
+
+
+
+          </ul>
+        </div>
+
+      </div>
+    </div>
+
+  </main>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+  </script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+  </script>
+
+  <script src="js/chart.js"></script>
+
+</body>
+
+</html>
