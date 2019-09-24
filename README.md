@@ -4,6 +4,10 @@
 
 此專案是一個以「管理訂單」為主軸，而打造一個電商網站所具備的後台管理功能，著重在於切版練習與後台管理思維的展現。
 
+## Demo
+
+[Demo Website](https://pierceshih15.github.io/F2E-week3-OrderAdmin/)
+
 ## 專案畫面
 
 ![image](https://github.com/pierceshih15/F2E-week3-OrderAdmin/blob/master/stylesheets/img/homePage.png)
@@ -20,6 +24,13 @@
 2. 使用者可以在訂單頁面，查看每一筆訂單的詳細資訊，包含訂單狀態、訂單金額、時間、訂單地址
 3. 使用者可以在產品頁面，查看每一個產品的詳細資訊，包含產品狀態、產品價格、存貨數量
 4. 使用者可以在產品頁面，逐一新增單筆的產品資訊
+
+## 使用哪些技術實作專案
+
+- 前端頁面：使用 HTML / CSS 實踐網頁切版與設計
+- 核心功能：使用 JavaScript（ES6）操作 DOM 元素，動態呈現網頁資料
+- 互動效果：使用 jQuery Plugin 營造網頁互動效果
+- 工具介接：整合 echarts 套件視覺化網站銷售數據
 
 ## Installing - 專案安裝流程
 
